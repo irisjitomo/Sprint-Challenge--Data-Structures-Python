@@ -8,7 +8,11 @@ class RingBuffer:
         self.storage = DoublyLinkedList()
 
     def append(self, item):
-        pass
+        # ring buffer sounds a lot like queue where the first one is
+        # also the last one out so I just added to tail
+        self.storage.add_to_tail(item)
+        self.capacity += 1
+        return self.capacity
 
     def get(self):
         # Note:  This is the only [] allowed
