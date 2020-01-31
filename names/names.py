@@ -1,4 +1,5 @@
 import time
+from bst import BST
 
 start_time = time.time()
 
@@ -11,10 +12,20 @@ names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
 duplicates = []
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
+# theres 2 arrays, names_1 and names_2
+# we need to make a BST with insert and contains and import it to names file
+binary_search_tree = BST('names')
+# loop thru names_1
+for names in names_1:
+# then binary_search_tree.insert those names
+    binary_search_tree.insert(names)
+# loop thru names_2
+for names2 in names_2:
+# then binary_search_tree.contains for those names, if contains
+    if binary_search_tree.contains(names2):
+# then append to duplicates = []
+        duplicates.append(names2)
+
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
