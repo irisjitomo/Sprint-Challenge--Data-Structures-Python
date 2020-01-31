@@ -26,6 +26,9 @@ for names2 in names_2:
 # then append to duplicates = []
         duplicates.append(names2)
 
+# original run time was a polynomial: 0(n ** 2)
+# runtime now is n log n or even 0(n)
+
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")

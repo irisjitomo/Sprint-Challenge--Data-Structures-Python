@@ -19,6 +19,11 @@ class RingBuffer:
         list_buffer_contents = []
 
         # TODO: Your code here
+        # make a temp variable
+        # if temp is less than storage length
+        # grab head from storage
+        # append self.storage.head.value to list_buffer_contents
+        # increase temp += 1
 
         return list_buffer_contents
 
