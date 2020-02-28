@@ -24,12 +24,7 @@ for name2 in names_2:
     if BST.contains(name2):
         duplicates.append(name2)
 
-# This solution is 0(n) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-# n1 = set(names_1)
-# n2 = set(names_2)
-
-# duplicates = n1.intersection(n2)
 
 
 end_time = time.time()
@@ -40,3 +35,10 @@ print (f"runtime: {end_time - start_time} seconds")
 # Python has built-in tools that allow for a very efficient approach to this problem
 # What's the best time you can accomplish with no restrictions on techniques or data
 # structures?
+
+# This solution is 0(n) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+n1 = set(names_1)
+n2 = set(names_2)
+
+duplicates = n1.intersection(n2)
