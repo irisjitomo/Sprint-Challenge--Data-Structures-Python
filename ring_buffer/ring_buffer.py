@@ -11,20 +11,20 @@ class RingBuffer:
 
     def append(self, item):
             # checks to see if self.storage
-        while self.storage: 
-            # set current node to self.storage.head
-            self.current = self.storage.head 
+            # set current node to self.storage.head 
+        if self.current == None:
+            self.current = self.storage.head
+        while self.storage.length < self.capacity: 
             # insert item to linked list
             self.storage.add_to_head(item)
             self.current = self.storage.head.next
-            # if capacity is reached 
-            if self.storage > self.capacity:
+
+            if self.storage.length == self.capacity and self.current == self.storage.tail:
                 # remove current head node
-                self.storage.remove_from_head(self.current)
+                self.storage.remove_from_tail()
                 # add_to_head the item
-                self.storage.add_to_head(item)
-                # set current node to head.next
-                # self.current = self.storage.head.next
+                self.storage.add_to_tail(item)
+                self.current = self.storage.head
 
     def get(self):
         # Note:  This is the only [] allowed
@@ -46,3 +46,4 @@ class ArrayRingBuffer:
 
     def get(self):
         pass
+
