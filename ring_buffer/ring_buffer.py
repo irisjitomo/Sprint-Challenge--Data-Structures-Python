@@ -14,23 +14,37 @@ class RingBuffer:
             # set current node to self.storage.head 
         if self.current == None:
             self.current = self.storage.head
-        while self.storage.length < self.capacity: 
+        if self.storage.length < self.capacity: 
             # insert item to linked list
-            self.storage.add_to_head(item)
-            self.current = self.storage.head.next
+            self.storage.add_to_tail(item)
+            # self.current = self.storage.head.next
 
-            if self.storage.length == self.capacity and self.current == self.storage.tail:
-                # remove current head node
-                self.storage.remove_from_tail()
-                # add_to_head the item
-                self.storage.add_to_tail(item)
-                self.current = self.storage.head
+        elif self.storage.length == self.capacity:
+            # remove current head node
+            removed_head = self.storage.head
+            self.storage.remove_from_head()
+            # add_to_head the item
+            self.storage.add_to_tail(item)
+            if removed_head == self.current:
+                self.current = self.storage.tail
 
     def get(self):
         # Note:  This is the only [] allowed
         list_buffer_contents = []
 
         # TODO: Your code here
+        current = self.current
+        list_buffer_contents.append(current.value)
+        if current.next:
+            node = current.next
+        else:
+            node = self.storage.head
+        while node is not current:
+            list_buffer_contents.append(node.value)
+            if node.next:
+                node = node.next
+            else:
+                node = self.storage.head
 
         return list_buffer_contents
 
